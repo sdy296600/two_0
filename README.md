@@ -48,3 +48,33 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+========오류날때 터미널에서 해결 방법==============
+
+# 1. npm 캐시 정리
+npm cache clean --force
+
+# 2. 레지스트리 변경 (한국에서 더 안정적)
+npm config set registry https://registry.npmmirror.com
+
+# 3. 재설치 시도
+npm install
+
+# scss 설치
+npm install -D scss 
+
+# Tailwind CSS 설치
+npm install -D tailwindcss postcss autoprefixer
+
+# Tailwind 설정 파일 생성<< 안됌..생략하기
+(npx tailwindcss init -p) 
+
+참고: npx tailwindcss init -p 명령어를 실행하면:
+tailwind.config.js 파일이 생성됩니다
+postcss.config.js 파일도 함께 생성됩니다 (-p 옵션)
+이 파일들을 생성한 후에는 tailwind.config.js에서 content 경로 설정과 CSS 파일에 Tailwind 지시어를 추가하는 작업이 필요합니다!
+
+# 차트 설치
+npm install vue-chartjs chart.js 
+
+# 설치가 완료되면 개발 서버 실행
+npm run dev
