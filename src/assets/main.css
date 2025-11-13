@@ -1,35 +1,28 @@
 @import './base.css';
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
+@layer components {
   #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+    @apply max-w-5xl mx-auto p-8 font-normal;
+  }
+
+  a,
+  .green {
+    @apply no-underline text-teal-600 dark:text-teal-400 transition-all duration-400 px-1;
+  }
+
+  @media (hover: hover) {
+    a:hover {
+      @apply bg-teal-100 dark:bg-teal-900 dark:bg-opacity-50;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    body {
+      @apply flex items-center justify-center;
+    }
+
+    #app {
+      @apply grid grid-cols-2 gap-8 p-0 px-8;
+    }
   }
 }

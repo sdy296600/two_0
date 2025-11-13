@@ -1,0 +1,109 @@
+<script setup>
+import { ref, computed, onMounted } from 'vue'
+import { RouterLink } from 'vue-router'
+import FeatureCard from '@/components/common/FeatureCard.vue'
+
+const userRole = ref('developer')
+
+const allFeatures = {
+  //관리자용 진입
+  admin: [
+    {
+      to: '/admin',
+      icon: '👨‍💼',
+      title: '관리자 시스템',
+      description: '20개의 냉장 사물함을 실시간으로 모니터링하고 관리하세요',
+    },
+  ],
+  //기사용 진입
+  driver: [
+    {
+      to: '/driver',
+      icon: '🚗',
+      title: '사용자 시스템(기사)',
+      description: '배정된 배송을 관리하고 추적하세요',
+    },
+  ],
+  //개발용 진입
+  developer: [
+    {
+      to: '/admin',
+      icon: '👨‍💼',
+      title: '관리자 시스템',
+      description: '20개의 냉장 사물함을 실시간으로 모니터링하고 관리하세요',
+    },
+    {
+      to: '/driver',
+      icon: '🚗',
+      title: '사용자 시스템(기사)',
+      description: '배정된 배송을 관리하고 추적하세요',
+    },
+    {
+      to: '/demo',
+      icon: '📊',
+      title: '통계 대시보드',
+      description: '실시간 사용률과 수익 통계를 한눈에 확인하세요',
+    },
+  ],
+}
+
+const features = computed(() => allFeatures[userRole.value] || allFeatures.developer)
+
+onMounted(() => {
+  const role = localStorage.getItem('userRole')
+  if (role) {
+    userRole.value = role
+  }
+})
+</script>
+
+<template>
+  <main class="px-8 py-12 max-w-[1200px] mx-auto">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold text-slate-800 dark:text-slate-100 mb-4">
+        🧊 ChillBox
+        <span v-if="userRole === 'admin'">관리자 시스템</span>
+        <span v-else-if="userRole === 'driver'">사용자 시스템</span>
+        <span v-else>통합 관리 시스템</span>
+      </h1>
+      <p class="text-xl text-slate-600 dark:text-slate-300 mb-12">
+        <span v-if="userRole === 'admin'">냉장 사물함을 관리하는 관리자 페이지입니다</span>
+        <span v-else-if="userRole === 'driver'">배송 업무를 관리하는 기사 페이지입니다</span>
+        <span v-else>모든 시스템에 접근할 수 있는 개발자 페이지입니다</span>
+      </p>
+
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6 mb-12">
+        <FeatureCard
+          v-for="feature in features"
+          :key="feature.title"
+          :to="feature.to"
+          :icon="feature.icon"
+          :title="feature.title"
+          :description="feature.description"
+        >
+        </FeatureCard>
+      </div>
+
+      <div class="flex gap-4 justify-center flex-wrap">
+        <RouterLink
+          to="/dashboard"
+          class="px-8 py-4 rounded-lg text-lg font-semibold no-underline transition-all duration-200 inline-block bg-gradient-to-br from-[#296AF1] to-[#3DD9B6] text-white hover:-translate-y-0.5 hover:shadow-lg"
+        >
+          대시보드로 이동
+        </RouterLink>
+        <RouterLink
+          to="/demo"
+          class="px-8 py-4 rounded-lg text-lg font-semibold no-underline transition-all duration-200 inline-block bg-white dark:bg-slate-800 text-[#296AF1] dark:text-[#3DD9B6] border-2 border-[#296AF1] dark:border-[#3DD9B6] hover:bg-[#296AF1] hover:text-white dark:hover:bg-[#3DD9B6] dark:hover:text-slate-900"
+        >
+          컴포넌트 데모
+        </RouterLink>
+        <!-- <RouterLink
+          to="/login"
+          class="px-8 py-4 rounded-lg text-lg font-semibold no-underline transition-all duration-200 inline-block bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-100 hover:bg-slate-300 dark:hover:bg-slate-600"
+        >
+          로그인
+        </RouterLink> -->
+      </div>
+    </div>
+  </main>
+</template>
