@@ -41,8 +41,8 @@ const allFeatures = {
     {
       to: '/demo',
       icon: '📊',
-      title: '통계 대시보드',
-      description: '실시간 사용률과 수익 통계를 한눈에 확인하세요',
+      title: '데모',
+      description: '',
     },
   ],
 }
@@ -86,23 +86,11 @@ onMounted(() => {
 
       <div class="flex gap-4 justify-center flex-wrap">
         <RouterLink
-          to="/dashboard"
-          class="px-8 py-4 rounded-lg text-lg font-semibold no-underline transition-all duration-200 inline-block bg-gradient-to-br from-[#296AF1] to-[#3DD9B6] text-white hover:-translate-y-0.5 hover:shadow-lg"
-        >
-          대시보드로 이동
-        </RouterLink>
-        <RouterLink
           to="/demo"
           class="px-8 py-4 rounded-lg text-lg font-semibold no-underline transition-all duration-200 inline-block bg-white dark:bg-slate-800 text-[#296AF1] dark:text-[#3DD9B6] border-2 border-[#296AF1] dark:border-[#3DD9B6] hover:bg-[#296AF1] hover:text-white dark:hover:bg-[#3DD9B6] dark:hover:text-slate-900"
         >
           컴포넌트 데모
         </RouterLink>
-        <!-- <RouterLink
-          to="/login"
-          class="px-8 py-4 rounded-lg text-lg font-semibold no-underline transition-all duration-200 inline-block bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-100 hover:bg-slate-300 dark:hover:bg-slate-600"
-        >
-          로그인
-        </RouterLink> -->
       </div>
     </div>
   </main>
