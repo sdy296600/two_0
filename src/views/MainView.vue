@@ -16,14 +16,14 @@ const allFeatures = {
     },
   ],
   //기사용 진입
-  driver: [
-    {
-      to: '/driver',
-      icon: '🚗',
-      title: '사용자 시스템(기사)',
-      description: '배정된 배송을 관리하고 추적하세요',
-    },
-  ],
+  // driver: [
+  //   {
+  //     to: '/driver',
+  //     icon: '🚗',
+  //     title: '사용자 시스템(기사)',
+  //     description: '배정된 배송을 관리하고 추적하세요',
+  //   },
+  // ],
   //개발용 진입
   developer: [
     {
@@ -32,12 +32,12 @@ const allFeatures = {
       title: '관리자 시스템',
       description: '20개의 냉장 사물함을 실시간으로 모니터링하고 관리하세요',
     },
-    {
-      to: '/driver',
-      icon: '🚗',
-      title: '사용자 시스템(기사)',
-      description: '배정된 배송을 관리하고 추적하세요',
-    },
+    // {
+    //   to: '/driver',
+    //   icon: '🚗',
+    //   title: '사용자 시스템(기사)',
+    //   description: '배정된 배송을 관리하고 추적하세요',
+    // },
     {
       to: '/demo',
       icon: '📊',
