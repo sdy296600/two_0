@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
-import FeatureCard from '@/components/common/FeatureCard.vue'
+// import FeatureCard from '@/components/common/FeatureCard.vue'
 
 const userRole = ref('developer')
 
@@ -73,15 +73,20 @@ onMounted(() => {
       </p>
 
       <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6 mb-12">
-        <FeatureCard
+        <div
           v-for="feature in features"
           :key="feature.title"
-          :to="feature.to"
-          :icon="feature.icon"
-          :title="feature.title"
-          :description="feature.description"
+          class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-md hover:-translate-y-1 hover:shadow-xl transition-all duration-200"
         >
-        </FeatureCard>
+          <RouterLink :to="feature.to" class="no-underline">
+            <h3 class="text-2xl font-semibold text-[#296AF1] dark:text-[#3DD9B6] mb-3">
+              {{ feature.icon }} {{ feature.title }}
+            </h3>
+            <p class="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+              {{ feature.description }}
+            </p>
+          </RouterLink>
+        </div>
       </div>
 
       <div class="flex gap-4 justify-center flex-wrap">
